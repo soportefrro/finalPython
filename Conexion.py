@@ -1,5 +1,6 @@
 import pymysql
 
+
 class Conexion():
     def __init__(self):
         try:
