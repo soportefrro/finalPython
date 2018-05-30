@@ -7,3 +7,5 @@ class CapaDeNegocio():
         return self.cdd.listarPartidos()
 
     def listarAsientos(self):
+        sarasa = "pija"
+        
