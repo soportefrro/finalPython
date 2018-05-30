@@ -30,11 +30,11 @@ class Inicio():
         listaPartidos= self.cdn.listarPartidos()
 
         for i in range(len(listaPartidos)):
-              self.tree.insert("", i,text=listaPartidos[i][0], values=(listaPartidos[i][1],listaPartidos[i][2],listaPartidos[i][3],listaPartidos[i][4]))
+              self.tree.insert("", i,text=listaPartidos[i][1], values=(listaPartidos[i][2],listaPartidos[i][3],listaPartidos[i][4],listaPartidos[i][5],listaPartidos[i][0]))
 
 
-        botonComprar = Button(self.root, text="Comprar", command= self.seleccionarAsiento)
-        botonComprar.grid(column=1, row=1, sticky=S)
+        botonSeleccionar = Button(self.root, text="Seleccionar", command= self.seleccionarAsiento)
+        botonSeleccionar.grid(column=1, row=1, sticky=S)
 
 
         self.tree.grid(column=0, row=0, columnspan=1000, sticky=N+E+S+W)
@@ -46,8 +46,6 @@ class Inicio():
     def seleccionarAsiento(self):
         posicion= self.tree.selection()
         partidoSeleccionado = self.tree.item(posicion)
-        fecha=partidoSeleccionado["text"]
-        pais1=partidoSeleccionado["values"][0]
-        pais2=partidoSeleccionado["values"][1]
+        idPartido=partidoSeleccionado["values"][4]
         asientos= SeleccionAsiento()
-        asientos.seleccionarAsiento(fecha, pais1, pais2)
+        asientos.seleccionarAsiento(idPartido)
