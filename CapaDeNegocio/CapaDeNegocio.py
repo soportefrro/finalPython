@@ -8,4 +8,4 @@ class CapaDeNegocio():
 
     def listarAsientos(self):
         sarasa = "pija"
-        
+
