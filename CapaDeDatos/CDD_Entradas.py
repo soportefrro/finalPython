@@ -7,7 +7,7 @@ class CDD_Entradas:
         self.con=Conexion()
 
     def registrarCompra(self, nuevaEntrada):
-        print(nuevaEntrada.fechaVenta, nuevaEntrada.nroComprobante, repr(nuevaEntrada.cliente.dni), nuevaEntrada.partido.idPartido, nuevaEntrada.nroAsiento)
-        query = "INSERT INTO entrada values({0},{1},{2},{3},{4})".format(nuevaEntrada.fechaVenta, nuevaEntrada.nroComprobante, repr(nuevaEntrada.cliente.dni), nuevaEntrada.partido.idPartido, nuevaEntrada.nroAsiento)
+        print(nuevaEntrada.fechaVenta, repr(nuevaEntrada.cliente.dni), nuevaEntrada.partido.idPartido, nuevaEntrada.nroAsiento)
+        query = "INSERT INTO entrada (fechaVenta, dni, idPartido, nroAsiento) values({0},{1},{2},{3})".format(nuevaEntrada.fechaVenta, repr(nuevaEntrada.cliente.dni), nuevaEntrada.partido.idPartido, nuevaEntrada.nroAsiento)
         self.con.ejecutar(query)
         self.con.conn.commit()

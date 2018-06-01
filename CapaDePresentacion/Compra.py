@@ -10,7 +10,7 @@ class Compra():
         cdn = CapaDeNegocio()
         partido = cdn.buscarPartido(idPartido)
         print(partido.idPartido, partido.pais1)
-        nuevaEntrada = Entrada(cliente, partido, date.today().strftime('%Y%m%d'), Entrada.ultimoNumComprobante , idAsiento) #instancio una nueva entrada
+        nuevaEntrada = Entrada(cliente, partido, date.today().strftime('%Y%m%d') , idAsiento) #instancio una nueva entrada
 
         cdn.registrarCompra(nuevaEntrada)
 
