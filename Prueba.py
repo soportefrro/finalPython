@@ -1,6 +1,6 @@
 from CapaDePresentacion import *
-from CapaDePresentacion.Inicio import *
+from CapaDePresentacion.PresentacionPartidos import *
 
-cp = Inicio()
+cp = PresentacionPartidos()
 
-cp.inicializacion()
+cp.mostrarPartidos()
