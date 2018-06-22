@@ -1,8 +1,8 @@
 class Entrada():
 
 
-    def __init__(self, nroComprobante, cliente, partido, fechaVenta, nroAsiento):
-        self.nroComprobante=nroComprobante
+
+    def __init__(self, cliente, partido, fechaVenta, nroAsiento):
         self.cliente = cliente
         self.partido = partido
         self.fechaVenta = fechaVenta

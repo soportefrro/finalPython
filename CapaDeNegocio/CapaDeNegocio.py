@@ -29,12 +29,14 @@ class CapaDeNegocio():
         self.cdd = CDD_Entradas()
         self.cdd.registrarCompra(nuevaEntrada)
 
+
     def altaCliente(self, cliente):
         self.cdd = CDD_Clientes()
         if self.cdd.contarClientesPorDni(cliente.dni) == 0 and cliente.dni.isdigit() and cliente.dni != "" and cliente.apellido != "" and cliente.nombre != "" and cliente.mail != "":
             self.cdd.altaCliente(cliente)
             return True
         else: return False
+
 
 
         

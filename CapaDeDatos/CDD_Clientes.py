@@ -6,6 +6,7 @@ class CDD_Clientes:
         self.con=Conexion()
 
     def buscarCliente(self, dni):
+
         query="Select * from cliente where dni={0}".format(repr(dni))
         self.con.ejecutar(query)
         cli=self.con.cur.fetchone()
@@ -25,3 +26,4 @@ class CDD_Clientes:
         self.con.ejecutar(query)
         cant = self.con.cur.fetchone()
         return cant[0]
+

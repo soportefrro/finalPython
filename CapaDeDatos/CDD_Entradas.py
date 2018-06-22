@@ -14,3 +14,4 @@ class CDD_Entradas:
         self.con.conn.commit()
         print(self.con.cur.lastrowid)
         nuevaEntrada.nroComprobante = self.con.cur.lastrowid
+
