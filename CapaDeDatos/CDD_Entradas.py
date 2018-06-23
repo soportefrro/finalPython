@@ -12,6 +12,5 @@ class CDD_Entradas:
         self.con.ejecutar(query2)
         self.con.ejecutar(query)
         self.con.conn.commit()
-        print(self.con.cur.lastrowid)
         nuevaEntrada.nroComprobante = self.con.cur.lastrowid
 
