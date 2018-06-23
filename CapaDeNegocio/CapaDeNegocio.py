@@ -37,6 +37,13 @@ class CapaDeNegocio():
             return True
         else: return False
 
+    def listarAsientosPartido(self, idPartido):
+        self.cdd = CDD_Partidos()
+        asientos = self.cdd.listarAsientosPartido(idPartido)
+        if len(asientos) == 0:
+            return False
+        else: return asientos
+
 
 
         

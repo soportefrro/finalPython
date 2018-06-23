@@ -27,3 +27,9 @@ class CDD_Partidos:
         else:
             partido = Partido(par[0],par[1],par[2],par[3],par[4],par[5],par[6])
             return partido
+
+    def listarAsientosPartido(self, idPartido):
+        query= "select nroAsiento, libre from vip where idPartido = {0}".format(idPartido)
+        self.con.ejecutar(query)
+        asientos=self.con.cur.fetchall()
+        return asientos

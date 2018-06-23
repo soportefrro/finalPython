@@ -19,8 +19,6 @@ class PresentacionAsientos():
             vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
             msjNoDisp=Label(vp, text="No hay asientos disponibles")
             msjNoDisp.grid(column=0, row=0)
-
-
         else:
             self.tl=Toplevel()
             self.tree = ttk.Treeview(self.tl)
@@ -33,6 +31,7 @@ class PresentacionAsientos():
             self.tree.column("estado", width=100)
             self.tree.heading("#0", text="Número de Asiento")
             self.tree.heading("estado", text="Estado")
+
             for i in range(len(arregloAsientos)):
                 self.tree.insert("", i,text=arregloAsientos[i][0], values=("Libre"))
 
@@ -41,11 +40,6 @@ class PresentacionAsientos():
             self.tree.grid(column=0, row=0, columnspan=1000, sticky=N+E+S+W)
 
             self.tl.mainloop()
-
-
-
-
-
 
     def seleccionarAsiento(self, idPartido):
         posicion= self.tree.selection()

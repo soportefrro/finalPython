@@ -7,14 +7,45 @@ import requests
 
 class PresentacionPartidos():
     def __init__(self):
-        self.root= Tk()
         self.cdn=CapaDeNegocio()
-        self.tree = ttk.Treeview(self.root)
 
 
     def mostrarPartidos(self):
-        vp=Frame(self.root)
+        vp, tree = self.treePartidos()
+        botonSeleccionar = Button(vp, text="Seleccionar", command= lambda: self.seleccionarPartido(tree))
+        botonSeleccionar.grid(column=1, row=1, sticky=S)
+
+    def getIdPartido(self, arbol):
+        posicion = arbol.selection()
+        if len(posicion) == 1:
+            partidoSeleccionado = arbol.item(posicion)
+            idPartido = partidoSeleccionado["values"][5]
+            return idPartido
+        else:
+            tl=Toplevel()
+            tl.title("Error")
+            vp=Frame(tl)
+            vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
+            etique=Label(vp, text="Por favor, seleccione un partido")
+            etique.grid(column=1, row=1)
+            botoncerrar=Button(vp, text="Aceptar", command=tl.destroy)
+            botoncerrar.grid(column=1, row=2)
+
+
+
+    def seleccionarPartido(self, tree):
+        idPartido = self.getIdPartido(tree)
+        asientos = PresentacionAsientos()
+        asientos.listarAsientos(idPartido)
+
+
+    def treePartidos(self):
+        tl=Toplevel()
+        tl.title("Partidos")
+        vp=Frame(tl)
         vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
+
+        self.tree = ttk.Treeview(vp)
 
         self.tree["column"]=("pais1", "pais2","instancia", "precio", "precioARS")
         self.tree.column("#0", width=100)
@@ -43,30 +74,8 @@ class PresentacionPartidos():
 
             self.tree.insert("", i,text=listaPartidos[i][1], values=(listaPartidos[i][2],listaPartidos[i][3],listaPartidos[i][4],listaPartidos[i][5], precio_dolares,  listaPartidos[i][0] ))
 
-        botonSeleccionar = Button(self.root, text="Seleccionar", command= self.seleccionarPartido)
-        botonSeleccionar.grid(column=1, row=1, sticky=S)
-
-
         self.tree.grid(column=0, row=0, columnspan=1000, sticky=N+E+S+W)
-        self.root.mainloop()
 
+        return vp, self.tree
 
-
-
-    def seleccionarPartido(self):
-        posicion = self.tree.selection()
-        if len(posicion) == 1:
-            partidoSeleccionado = self.tree.item(posicion)
-            idPartido = partidoSeleccionado["values"][5]
-            asientos = PresentacionAsientos()
-            asientos.listarAsientos(idPartido)
-        else:
-            tl=Toplevel()
-            tl.title("Error")
-            vp=Frame(tl)
-            vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
-            etique=Label(vp, text="Por favor, seleccione un partido")
-            etique.grid(column=1, row=1)
-            botoncerrar=Button(vp, text="Aceptar", command=tl.destroy)
-            botoncerrar.grid(column=1, row=2)
 
