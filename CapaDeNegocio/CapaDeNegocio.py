@@ -1,12 +1,19 @@
 from CapaDeDatos.CDD_Entradas import CDD_Entradas
 from CapaDeDatos.CDD_Partidos import *
 from CapaDeDatos.CDD_Clientes import *
+import requests
 
 class CapaDeNegocio():
 
     def listarPartidos(self):
         self.cdd = CDD_Partidos()
-        return self.cdd.listarPartidos()
+        partidos = self.cdd.listarPartidos()
+        cotizacionDolar = self.obtenerCotizacionDolar()
+
+        for i in partidos:
+            i.precioARS = i.precioUSD * cotizacionDolar
+
+        return partidos
 
     def listarAsientosDisponibles(self, id):
         self.cdd = CDD_Partidos()
@@ -23,7 +30,9 @@ class CapaDeNegocio():
 
     def buscarPartido(self, idPartido):
         self.cdd = CDD_Partidos()
-        return self.cdd.buscarPartido(idPartido)
+        partido = self.cdd.buscarPartido(idPartido)
+        partido.precioARS = partido.precioUSD * self.obtenerCotizacionDolar()
+        return partido
 
     def registrarCompra(self, nuevaEntrada):
         self.cdd = CDD_Entradas()
@@ -44,6 +53,12 @@ class CapaDeNegocio():
             return False
         else: return asientos
 
+
+    def obtenerCotizacionDolar(self):
+        url_dolar = "http://ws.geeklab.com.ar/dolar/get-dolar-json.php"
+        json_dolar = requests.get(url_dolar).json()
+        cotizacion_dolar = float(json_dolar["libre"])
+        return cotizacion_dolar
 
 
         

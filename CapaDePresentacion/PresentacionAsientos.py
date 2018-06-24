@@ -17,7 +17,7 @@ class PresentacionAsientos():
             tl.title("No hay disponibilidad")
             vp=Frame(tl)
             vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
-            msjNoDisp=Label(vp, text="No hay asientos disponibles")
+            msjNoDisp=Label(vp, text="No hay asientos disponibles para este partido.")
             msjNoDisp.grid(column=0, row=0)
         else:
             self.tl=Toplevel()
@@ -54,7 +54,7 @@ class PresentacionAsientos():
             tl.title("Error")
             vp=Frame(tl)
             vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
-            etique=Label(vp, text="Por favor, seleccione un asiento")
+            etique=Label(vp, text="Por favor, seleccione un asiento.")
             etique.grid(column=1, row=1)
             botoncerrar=Button(vp, text="Aceptar", command=tl.destroy)
             botoncerrar.grid(column=1, row=2)
