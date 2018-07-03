@@ -6,7 +6,7 @@ class Conexion():
         try:
             d=dict()
             d['user']= 'root'
-            d['password']= 'root'
+            d['password']= '1905'
             d['host']='localhost'
             d['database']='mundial2018'
             self.conn = pymysql.connect(**d)
@@ -16,7 +16,7 @@ class Conexion():
 
     def ejecutar(self, query):
         self.cur.execute(query)
-        #return self.cur.lastrowid
+
 
 if __name__ == '__main__':
     con = Conexion()

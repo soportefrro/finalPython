@@ -2,6 +2,7 @@ from datetime import date
 from CapaDeNegocio.CapaDeNegocio import CapaDeNegocio
 from Entrada import Entrada
 from tkinter import *
+from GenerarHTML import GenerarHTML
 
 
 class PresentacionCompra():
@@ -13,6 +14,9 @@ class PresentacionCompra():
         nuevaEntrada = Entrada(0, cliente, partido, date.today().strftime('%Y%m%d'), idAsiento, cotizacionVenta) #instancio una nueva entrada
 
         cdn.registrarCompra(nuevaEntrada)
+
+        generadorhtml = GenerarHTML()
+        generadorhtml.generarHTMLEntrada(nuevaEntrada)
 
         tl=Toplevel()
         tl.title("Comprobante de Compra")
