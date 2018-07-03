@@ -66,7 +66,7 @@ CREATE TABLE `entrada` (
   CONSTRAINT `fk_entrada_cliente` FOREIGN KEY (`dni`) REFERENCES `cliente` (`dni`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_entrada_vip` FOREIGN KEY (`idPartido`) REFERENCES `vip` (`idPartido`) ON UPDATE CASCADE,
   CONSTRAINT `fk_entrada_vip2` FOREIGN KEY (`nroAsiento`) REFERENCES `vip` (`nroAsiento`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `estadio` (
 
 LOCK TABLES `estadio` WRITE;
 /*!40000 ALTER TABLE `estadio` DISABLE KEYS */;
-INSERT INTO `estadio` VALUES ('Kaliningrado',30,'Kaliningrado'),('Nizhni',30,'Novgorod'),('Rostov',30,'Rostov'),('San Petersburgo',30,'San Perersburgo'),('Spartak',30,'Moscú'),('Volvogrado Arena',30,'Volvogrado');
+INSERT INTO `estadio` VALUES ('Ekaterimburgo Arena',30,'Ekaterimburgo'),('Fisht',30,'Sochi'),('Kaliningrado',30,'Kaliningrado'),('Kazan Arena',30,'Kazan'),('Luzhniki',30,'Moscú'),('Mordovia Arena',30,'Saransk'),('Nizhni',30,'Novgorod'),('Rostov Arena',30,'Rostov'),('Samara Arena',30,'Samara'),('San Petersburgo',30,'San Perersburgo'),('Spartak',30,'Moscú'),('Volvogrado Arena',30,'Volvogrado');
 /*!40000 ALTER TABLE `estadio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `partido` (
   PRIMARY KEY (`idPartido`),
   KEY `fk_partido_estadio_idx` (`nombreEstadio`),
   CONSTRAINT `fk_partido_estadio` FOREIGN KEY (`nombreEstadio`) REFERENCES `estadio` (`nombre`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `partido` (
 
 LOCK TABLES `partido` WRITE;
 /*!40000 ALTER TABLE `partido` DISABLE KEYS */;
-INSERT INTO `partido` VALUES (1,'2018-06-16','Argentina','Islandia','Grupo D',95,'Spartak'),(2,'2018-06-16','Croacia','Nigeria','Grupo D',80,'Kaliningrado');
+INSERT INTO `partido` VALUES (1,'2018-06-16','Argentina','Islandia','Grupo D',95,'Spartak'),(2,'2018-06-16','Croacia','Nigeria','Grupo D',80,'Kaliningrado'),(3,'2018-06-21','Argentina','Croacia','Grupo D',110,'Nizhni'),(4,'2018-06-22','Nigeria','Islandia','Grupo D',70,'Volvogrado Arena'),(5,'2018-06-26','Nigeria','Argentina','Grupo D',95,'San Petersburgo'),(6,'2018-06-26','Islandia','Croacia','Grupo D',95,'Rostov Arena'),(7,'2018-06-14','Rusia','Arabia Saudita','Grupo A',150,'Luzhniki'),(8,'2018-06-15','Egipto','Uruguay','Grupo A',90,'Ekaterimburgo Arena'),(9,'2018-06-15','Portugal','España','Grupo B',95,'Fisht'),(10,'2018-06-15','Marruecos','Irán','Grupo B',70,'San Petersburgo'),(11,'2018-06-17','Brasil','Suiza','Grupo E',85,'Rostov Arena'),(12,'2018-06-17','Costa Rica','Serbia','Grupo E',80,'Samara Arena');
 /*!40000 ALTER TABLE `partido` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +157,7 @@ CREATE TABLE `vip` (
 
 LOCK TABLES `vip` WRITE;
 /*!40000 ALTER TABLE `vip` DISABLE KEYS */;
-INSERT INTO `vip` VALUES (1,1,1),(1,1,2),(2,1,1),(3,1,1),(4,1,1),(5,1,1);
+INSERT INTO `vip` VALUES (1,1,1),(1,1,2),(1,1,3),(1,1,4),(1,1,5),(1,1,6),(1,1,7),(1,1,8),(1,1,9),(2,1,1),(2,1,2),(2,1,3),(2,1,4),(2,1,5),(3,1,1),(3,1,2),(3,1,3),(4,1,1),(4,1,3),(5,1,1);
 /*!40000 ALTER TABLE `vip` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -170,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-24  1:50:47
+-- Dump completed on 2018-07-03 15:07:14
