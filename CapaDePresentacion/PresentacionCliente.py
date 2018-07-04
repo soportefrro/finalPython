@@ -31,6 +31,7 @@ class PresentacionCliente:
         botonRegistrar = Button(vp, text = "Registrar Cliente", command= lambda : self.datosRegistro())
         botonRegistrar.grid(column = 2, row = 3)
 
+
     def leerCampoDNI(self):
         dni=self.dni.get()
         self.buscar(dni)
@@ -91,7 +92,7 @@ class PresentacionCliente:
             tl.title("Error")
             vp=Frame(tl)
             vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
-            etique=Label(vp, text="Cliente no encontrado")
+            etique=Label(vp, text="Cliente no encontrado.")
             etique.grid(column=1, row=1)
             botoncerrar=Button(vp, text="Aceptar", command=tl.destroy)
             botoncerrar.grid(column=1, row=2)
@@ -154,7 +155,7 @@ class PresentacionCliente:
             tl.title("Cliente registrado")
             vp=Frame(tl)
             vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
-            etique=Label(vp, text="Cliente registrado con éxito")
+            etique=Label(vp, text="Cliente registrado con éxito.")
             etique.grid(column=1, row=1)
             botoncerrar=Button(vp, text="Aceptar", command= lambda:self.buscar(cliente.dni))
             botoncerrar.grid(column=1, row=2)
@@ -165,7 +166,7 @@ class PresentacionCliente:
             tl.title("Error")
             vp=Frame(tl)
             vp.grid(column=0, row=0, padx=(100,100), pady=(20,20), sticky=(N, S, E, W))
-            etique=Label(vp, text="Ha ocurrido un error")
+            etique=Label(vp, text="Ha ocurrido un error.")
             etique.grid(column=1, row=1)
             botoncerrar=Button(vp, text="Aceptar", command=tl.destroy)
             botoncerrar.grid(column=1, row=2)

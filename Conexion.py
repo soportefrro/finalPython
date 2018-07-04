@@ -16,7 +16,7 @@ class Conexion():
 
     def ejecutar(self, query):
         self.cur.execute(query)
-        #return self.cur.lastrowid
+
 
 if __name__ == '__main__':
     con = Conexion()
