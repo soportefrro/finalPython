@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 
 class GenerarHTML():
+    informe = 1
 
     def generarHTMLEntrada(self, entrada):
         env = Environment(loader=FileSystemLoader("CapaDePresentacion"))
@@ -26,5 +27,25 @@ class GenerarHTML():
         f.write(html)
         f.close()
 
+    def generarHTMLInforme(self, entradasVendidas, sumatoria):
+        env = Environment(loader=FileSystemLoader("CapaDePresentacion"))
+        template = env.get_template("templateInforme.html")
+        entradas = []
 
+        for i in entradasVendidas:
+            e = {
+                'nroAsiento': i.nroAsiento,
+                'fechaVenta': i.fechaVenta,
+                'nombreapellido': i.cliente.nombre + " " + i.cliente.apellido,
+                'importe': i.partido.precioUSD * i.cotizacionVenta,
+                'sumatoria': sumatoria
+                }
+            entradas.append(e)
+
+            html = template.render(entradas)
+
+        f = open('Entradas_Vendidas/informe_nro_'+self.informe+'.html', 'w')
+        f.write(html)
+        self.informe = self.informe + 1
+        f.close()
 

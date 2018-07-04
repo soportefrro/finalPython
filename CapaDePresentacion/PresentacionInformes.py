@@ -3,6 +3,8 @@ from CapaDePresentacion.PresentacionPartidos import PresentacionPartidos
 from tkinter import *
 from tkinter import ttk
 
+from GenerarHTML import GenerarHTML
+
 
 class PresentacionInformes:
 
@@ -53,6 +55,16 @@ class PresentacionInformes:
 
         totalRecaudado=Label(vp, text="Total Recaudado: {0}".format(sumatoria))
         totalRecaudado.grid(column=0, row=0, sticky=E+S)
+
+        botonVerInforme=Button(vp, text="Imprimir Informe", command=lambda: self.generarhtmlInforme(entradasVendidas, sumatoria))
+        botonVerInforme.grid(column=1, row=2)
+
+
+
+
+    def generarhtmlInforme(self, entradasVendidas, sumatoria):
+        generadorhtml = GenerarHTML()
+        generadorhtml.generarHTMLInforme(entradasVendidas, sumatoria)
 
 
 
