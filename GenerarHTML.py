@@ -1,7 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
+from datetime import date
 
 class GenerarHTML():
-    informe = 1
 
     def generarHTMLEntrada(self, entrada):
         env = Environment(loader=FileSystemLoader("CapaDePresentacion"))
@@ -28,24 +28,35 @@ class GenerarHTML():
         f.close()
 
     def generarHTMLInforme(self, entradasVendidas, sumatoria):
+
         env = Environment(loader=FileSystemLoader("CapaDePresentacion"))
         template = env.get_template("templateInforme.html")
-        entradas = []
+
+        ENTRADAS_VENDIDAS = {}
 
         for i in entradasVendidas:
-            e = {
-                'nroAsiento': i.nroAsiento,
-                'fechaVenta': i.fechaVenta,
-                'nombreapellido': i.cliente.nombre + " " + i.cliente.apellido,
-                'importe': i.partido.precioUSD * i.cotizacionVenta,
-                'sumatoria': sumatoria
-                }
-            entradas.append(e)
+            datos_entrada = {
+                0: str(i.nroAsiento),
+                1: str(i.fechaVenta),
+                2: i.cliente.nombre + ' ' + i.cliente.apellido,
+                3: str(i.precioARS)
+            }
 
-            html = template.render(entradas)
+            ENTRADAS_VENDIDAS[i] = datos_entrada
 
-        f = open('Entradas_Vendidas/informe_nro_'+self.informe+'.html', 'w')
+        idPartido = str(entradasVendidas[0].partido.idPartido)
+
+
+        e = {
+            'entradas': ENTRADAS_VENDIDAS,
+            'sumatoria': sumatoria,
+            'idPartido': idPartido
+        }
+
+        html = template.render(e)
+
+
+        f = open('Informes/informe_partido'+idPartido+'_'+date.today().strftime('%Y%m%d')+'.html', 'w')
         f.write(html)
-        self.informe = self.informe + 1
         f.close()
 

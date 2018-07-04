@@ -11,7 +11,7 @@ class PresentacionCompra():
         cdn = CapaDeNegocio()
         partido = cdn.buscarPartido(idPartido)
         cotizacionVenta = cdn.obtenerCotizacionDolar()
-        nuevaEntrada = Entrada(0, cliente, partido, date.today().strftime('%Y%m%d'), idAsiento, cotizacionVenta) #instancio una nueva entrada
+        nuevaEntrada = Entrada(0, cliente, partido, date.today().strftime('%Y%m%d'), idAsiento, cotizacionVenta, partido.precioUSD, partido.precioARS) #instancio una nueva entrada
 
         cdn.registrarCompra(nuevaEntrada)
 

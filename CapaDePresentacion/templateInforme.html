@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Informe Partido</title>
-</head>
-<body>
-<div class="entrada">
-        <p>Número Asiento: {{nroAsiento}}</p>
-        <p>Fecha: {{fechaVenta}} </p>
-        <p>Nombre y Apellido: {{nombreapellido}}</p>
-        <p>Importe: {{importe}}</p>
-    </div>
-<h5>Sumatoria: {{sumatoria}}</h5>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Informe Partido</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <table class="informe">
+            <caption>Partido Nro.: {{ idPartido }}</caption>
+            <tr>
+                <th>Numero de Asiento</th>
+                <th>Fecha de Venta</th>
+                <th>Nombre y Apellido del Cliente</th>
+                <th>Precio ($)</th>
+            </tr>
+            {% for key in entradas %}
+            <tr>
+                {% for key2 in entradas[key] %}
+                    <td>{{ entradas[key][key2] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <h3>Sumatoria: ${{sumatoria}}</h3>
+    </body>
 </html>

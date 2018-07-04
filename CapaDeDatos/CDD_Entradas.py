@@ -32,7 +32,7 @@ class CDD_Entradas:
                 self.cddPartido = CDD_Partidos()
                 partido = self.cddPartido.buscarPartido(ent[3])
 
-                e = Entrada(ent[1],cliente,partido,ent[0], ent[4], ent[5])
+                e = Entrada(ent[1],cliente,partido,ent[0], ent[4], ent[6], ent[5], ent[7])
                 entradas.append(e)
             return entradas
 

@@ -47,9 +47,8 @@ class PresentacionInformes:
 
 
         for i in entradasVendidas:
-            importe = i.partido.precioUSD * i.cotizacionVenta
-            sumatoria = sumatoria + importe
-            tree.insert("", i.nroComprobante, text= i.nroAsiento, values=(i.fechaVenta, i.cliente.nombre, i.cliente.apellido, importe))
+            sumatoria += i.precioARS
+            tree.insert("", i.nroComprobante, text= i.nroAsiento, values=(i.fechaVenta, i.cliente.nombre, i.cliente.apellido, i.precioARS))
 
         tree.grid(column=0, row=1, columnspan=1000, sticky=N+E+S+W)
 
@@ -58,8 +57,6 @@ class PresentacionInformes:
 
         botonVerInforme=Button(vp, text="Imprimir Informe", command=lambda: self.generarhtmlInforme(entradasVendidas, sumatoria))
         botonVerInforme.grid(column=1, row=2)
-
-
 
 
     def generarhtmlInforme(self, entradasVendidas, sumatoria):
