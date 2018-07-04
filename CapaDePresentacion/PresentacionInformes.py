@@ -23,6 +23,7 @@ class PresentacionInformes:
     def mostrarInforme(self, idPartido):
         cdn= CapaDeNegocio()
         entradasVendidas = cdn.buscarEntradasParaPartido(idPartido)
+        sumatoria = 0
 
         tl=Toplevel()
         tree = ttk.Treeview(tl)
@@ -45,15 +46,13 @@ class PresentacionInformes:
 
         for i in entradasVendidas:
             importe = i.partido.precioUSD * i.cotizacionVenta
-            tree.insert("", i,text= i.nroAsiento, values=(i.fechaVenta, i.cliente.nombre, i.cliente.apellido, importe))
-            sumatoria =+ importe
+            sumatoria = sumatoria + importe
+            tree.insert("", i.nroComprobante, text= i.nroAsiento, values=(i.fechaVenta, i.cliente.nombre, i.cliente.apellido, importe))
 
-
-
-        tree.grid(column=0, row=0, columnspan=1000, sticky=N+E+S+W)
+        tree.grid(column=0, row=1, columnspan=1000, sticky=N+E+S+W)
 
         totalRecaudado=Label(vp, text="Total Recaudado: {0}".format(sumatoria))
-        totalRecaudado.grid(column=0, row=1000, sticky=E+S)
+        totalRecaudado.grid(column=0, row=0, sticky=E+S)
 
 
 

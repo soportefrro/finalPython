@@ -1,9 +1,7 @@
 from Conexion import Conexion
 from Entrada import Entrada
-
-
-def buscarCliente(param):
-    pass
+from CapaDeDatos.CDD_Clientes import *
+from CapaDeDatos.CDD_Partidos import *
 
 
 class CDD_Entradas:
@@ -28,8 +26,13 @@ class CDD_Entradas:
         else:
             entradas = []
             for ent in listaEntradas:
-                cliente = buscarCliente(ent[2])
-                e = Entrada(ent[1],ent[2],ent[3],ent[0], ent[4], ent[5])
+                self.cddCliente = CDD_Clientes()
+                cliente = self.cddCliente.buscarCliente(ent[2])
+
+                self.cddPartido = CDD_Partidos()
+                partido = self.cddPartido.buscarPartido(ent[3])
+
+                e = Entrada(ent[1],cliente,partido,ent[0], ent[4], ent[5])
                 entradas.append(e)
             return entradas
 

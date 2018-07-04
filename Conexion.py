@@ -6,7 +6,7 @@ class Conexion():
         try:
             d=dict()
             d['user']= 'root'
-            d['password']= '1905'
+            d['password']= 'root'
             d['host']='localhost'
             d['database']='mundial2018'
             self.conn = pymysql.connect(**d)
