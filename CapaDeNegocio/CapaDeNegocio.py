@@ -60,8 +60,10 @@ class CapaDeNegocio():
         cotizacion_dolar = float(json_dolar["libre"])
         return cotizacion_dolar
 
+
     def buscarEntradasParaPartido(self, idPartido):
         self.cdd = CDD_Entradas()
         return self.cdd.buscarEntradasParaPartido(idPartido)
+
 
         

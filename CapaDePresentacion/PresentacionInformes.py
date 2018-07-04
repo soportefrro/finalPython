@@ -44,8 +44,6 @@ class PresentacionInformes:
 
 
         for i in entradasVendidas:
-            #print("id del partido obje" +partido.idPartido)
-            #print("id del partido de la entrada" + i.partido.idPartido)
             importe = i.partido.precioUSD * i.cotizacionVenta
             tree.insert("", i,text= i.nroAsiento, values=(i.fechaVenta, i.cliente.nombre, i.cliente.apellido, importe))
             sumatoria =+ importe
