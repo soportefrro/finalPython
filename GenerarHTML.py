@@ -1,5 +1,5 @@
 from jinja2 import Environment, FileSystemLoader
-from datetime import date
+from time import gmtime, strftime
 
 class GenerarHTML():
 
@@ -56,7 +56,7 @@ class GenerarHTML():
         html = template.render(e)
 
 
-        f = open('Informes/informe_partido'+idPartido+'_'+date.today().strftime('%Y%m%d')+'.html', 'w')
+        f = open('Informes/informe_partido'+idPartido+'_'+strftime("%Y-%m-%d-%H-%M-%S", gmtime())+'.html', 'w')
         f.write(html)
         f.close()
 
